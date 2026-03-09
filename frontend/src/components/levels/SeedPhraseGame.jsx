@@ -101,9 +101,15 @@ export default function SeedPhraseGame({ level, onComplete }) {
         onComplete({ id: level.id, xp: level.xp, badge: level.badge });
       }, 2000);
     } else {
-      toast.error('Not quite right! Try again.');
-      setSelectedWords([]);
-      setWords([...CORRECT_PHRASE].sort(() => Math.random() - 0.5));
+      setAttempts(attempts + 1);
+      toast.error('Not quite right! Try the hint button below for help.');
+      
+      // Auto-show first hint after 2 failed attempts
+      if (attempts >= 1 && hintLevel === 0) {
+        setTimeout(() => {
+          toast.info('💡 Click the "Get Hint" button for help!');
+        }, 1000);
+      }
     }
   };
 
