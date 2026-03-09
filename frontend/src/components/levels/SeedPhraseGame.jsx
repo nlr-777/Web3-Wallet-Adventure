@@ -172,9 +172,12 @@ export default function SeedPhraseGame({ level, onComplete }) {
       <Button
         onClick={handleCheck}
         disabled={selectedWords.length !== 12}
-        className="w-full btn-adventure"
+        className="w-full btn-retro text-lg font-bold"
         size="lg"
-        style={{ background: 'var(--gradient-button)' }}
+        style={{ 
+          background: 'linear-gradient(135deg, hsl(15 100% 60%), hsl(325 100% 50%))',
+          border: '2px solid hsl(180 100% 50% / 0.5)'
+        }}
       >
         🔓 Unlock Wallet
       </Button>
