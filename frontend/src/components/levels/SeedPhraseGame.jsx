@@ -14,7 +14,8 @@ const CORRECT_PHRASE = [
 export default function SeedPhraseGame({ level, onComplete }) {
   const [words, setWords] = useState([]);
   const [selectedWords, setSelectedWords] = useState([]);
-  const [showHint, setShowHint] = useState(false);
+  const [hintLevel, setHintLevel] = useState(0);
+  const [attempts, setAttempts] = useState(0);
 
   useEffect(() => {
     shuffleWords();
@@ -24,6 +25,51 @@ export default function SeedPhraseGame({ level, onComplete }) {
     const shuffled = [...CORRECT_PHRASE].sort(() => Math.random() - 0.5);
     setWords(shuffled);
     setSelectedWords([]);
+  };
+
+  const getHintText = () => {
+    switch(hintLevel) {
+      case 0:
+        return "💡 The words tell a story about a magical adventure! Think about the journey from start to finish.";
+      case 1:
+        return "🎯 Start with: 'magic' → 'wallet' → 'treasure'. These are the first 3 words!";
+      case 2:
+        return "🔥 First 6 words: magic, wallet, treasure, adventure, quest, brave";
+      case 3:
+        return "⭐ Almost there! First 9: magic, wallet, treasure, adventure, quest, brave, shield, guardian, secure";
+      case 4:
+        return "🎁 Full answer: magic → wallet → treasure → adventure → quest → brave → shield → guardian → secure → victory → freedom → trust";
+      default:
+        return "💡 Click for a hint!";
+    }
+  };
+
+  const showNextHint = () => {
+    if (hintLevel < 4) {
+      setHintLevel(hintLevel + 1);
+      
+      // Auto-fill words based on hint level
+      if (hintLevel === 1) {
+        // Fill first 3 words
+        const firstThree = CORRECT_PHRASE.slice(0, 3);
+        setSelectedWords(firstThree);
+        setWords(words.filter(w => !firstThree.includes(w)));
+      } else if (hintLevel === 2) {
+        // Fill first 6 words
+        const firstSix = CORRECT_PHRASE.slice(0, 6);
+        setSelectedWords(firstSix);
+        setWords(words.filter(w => !firstSix.includes(w)));
+      } else if (hintLevel === 3) {
+        // Fill first 9 words
+        const firstNine = CORRECT_PHRASE.slice(0, 9);
+        setSelectedWords(firstNine);
+        setWords(words.filter(w => !firstNine.includes(w)));
+      } else if (hintLevel === 4) {
+        // Show all words - just let them click unlock
+        setSelectedWords(CORRECT_PHRASE);
+        setWords([]);
+      }
+    }
   };
 
   const handleWordClick = (word, fromSelected = false) => {
