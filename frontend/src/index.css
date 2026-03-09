@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,7 +6,7 @@
 
 body {
     margin: 0;
-    font-family: 'Nunito', 'Fredoka', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Space Grotesk', 'Orbitron', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -17,95 +17,76 @@ code {
 
 @layer base {
     :root {
-        /* Kid-friendly Adventure Color Palette - HSL Format */
-        --background: 200 25% 97%;  /* Light sky blue background */
-        --foreground: 220 20% 25%;  /* Deep navy for text */
+        /* BlockQuest Retro Neon Color Palette - HSL Format */
+        --background: 220 25% 10%;  /* Dark background like BlockQuest */
+        --foreground: 0 0% 98%;  /* Bright text */
         
-        --card: 0 0% 100%;          /* White cards */
-        --card-foreground: 220 20% 25%;
+        --card: 220 20% 15%;  /* Dark cards */
+        --card-foreground: 0 0% 98%;
         
-        --popover: 0 0% 100%;
-        --popover-foreground: 220 20% 25%;
+        --popover: 220 20% 15%;
+        --popover-foreground: 0 0% 98%;
         
-        /* Primary - Adventure Green */
-        --primary: 150 60% 45%;     /* Vibrant teal-green */
-        --primary-foreground: 0 0% 100%;
-        --primary-glow: 150 70% 55%;
+        /* Primary - Neon Cyan */
+        --primary: 180 100% 50%;     /* Bright cyan #00D4FF */
+        --primary-foreground: 220 25% 10%;
+        --primary-glow: 180 100% 65%;
         
-        /* Secondary - Treasure Gold */
-        --secondary: 45 95% 60%;    /* Bright golden yellow */
-        --secondary-foreground: 220 20% 25%;
+        /* Secondary - Electric Magenta/Pink */
+        --secondary: 325 100% 50%;    /* Hot magenta/pink #FF00B8 */
+        --secondary-foreground: 0 0% 100%;
         
-        /* Accent - Adventure Orange */
-        --accent: 25 95% 60%;       /* Playful orange */
-        --accent-foreground: 0 0% 100%;
+        /* Accent - Neon Orange */
+        --accent: 15 100% 60%;       /* Vibrant orange #FF6B35 */
+        --accent-foreground: 220 25% 10%;
         
-        /* Muted - Soft gray */
-        --muted: 200 20% 92%;
-        --muted-foreground: 220 15% 55%;
+        /* Muted - Darker gray */
+        --muted: 220 20% 20%;
+        --muted-foreground: 0 0% 65%;
         
-        /* Success - Victory Green */
-        --success: 140 65% 50%;
-        --success-foreground: 0 0% 100%;
+        /* Success - Neon Green */
+        --success: 150 100% 50%;
+        --success-foreground: 220 25% 10%;
         
-        /* Warning - Alert Yellow */
-        --warning: 45 95% 55%;
-        --warning-foreground: 220 20% 25%;
+        /* Warning - Neon Yellow */
+        --warning: 60 100% 50%;
+        --warning-foreground: 220 25% 10%;
         
-        /* Danger - Scammer Red */
-        --destructive: 0 75% 60%;
+        /* Danger/Destructive - Bright Red */
+        --destructive: 0 100% 60%;
         --destructive-foreground: 0 0% 100%;
         
         /* Borders & Inputs */
-        --border: 200 20% 85%;
-        --input: 200 20% 90%;
-        --ring: 150 60% 45%;
+        --border: 220 20% 30%;
+        --input: 220 20% 25%;
+        --ring: 180 100% 50%;
         
-        /* Game Elements */
-        --badge: 270 50% 60%;       /* Purple badge */
-        --badge-foreground: 0 0% 100%;
-        --xp-bar: 150 60% 45%;      /* Green XP bar */
-        --level-locked: 0 0% 75%;   /* Gray for locked levels */
+        /* Extra Neon Colors */
+        --neon-purple: 270 100% 60%;  /* #9B5DE5 */
+        --neon-lime: 90 100% 50%;
+        --neon-pink: 340 100% 60%;
         
-        /* Gradients */
-        --gradient-hero: linear-gradient(135deg, hsl(180 55% 85%) 0%, hsl(200 60% 90%) 100%);
-        --gradient-map: linear-gradient(180deg, hsl(200 45% 90%) 0%, hsl(150 40% 88%) 100%);
-        --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(200 30% 98%) 100%);
-        --gradient-button: linear-gradient(135deg, hsl(150 60% 50%) 0%, hsl(150 60% 42%) 100%);
-        --gradient-gold: linear-gradient(135deg, hsl(45 95% 65%) 0%, hsl(40 90% 55%) 100%);
+        /* Gradients - Retro style */
+        --gradient-hero: linear-gradient(135deg, hsl(180 100% 50%) 0%, hsl(270 100% 60%) 50%, hsl(325 100% 50%) 100%);
+        --gradient-map: linear-gradient(180deg, hsl(220 25% 10%) 0%, hsl(220 25% 15%) 100%);
+        --gradient-card: linear-gradient(145deg, hsl(220 20% 15%) 0%, hsl(220 20% 18%) 100%);
+        --gradient-button: linear-gradient(135deg, hsl(15 100% 60%) 0%, hsl(325 100% 50%) 100%);
+        --gradient-cyan-purple: linear-gradient(135deg, hsl(180 100% 50%) 0%, hsl(270 100% 60%) 100%);
+        --gradient-orange-pink: linear-gradient(135deg, hsl(15 100% 60%) 0%, hsl(325 100% 50%) 100%);
         
-        /* Shadows */
-        --shadow-sm: 0 2px 8px -2px hsl(220 20% 25% / 0.1);
-        --shadow-md: 0 4px 16px -4px hsl(220 20% 25% / 0.15);
-        --shadow-lg: 0 8px 24px -6px hsl(220 20% 25% / 0.2);
-        --shadow-glow: 0 0 24px hsl(150 60% 45% / 0.3);
-        --shadow-gold: 0 4px 20px hsl(45 95% 60% / 0.4);
+        /* Neon Shadows */
+        --shadow-sm: 0 2px 8px -2px hsl(180 100% 50% / 0.3);
+        --shadow-md: 0 4px 16px -4px hsl(180 100% 50% / 0.4);
+        --shadow-lg: 0 8px 24px -6px hsl(180 100% 50% / 0.5);
+        --shadow-glow-cyan: 0 0 30px hsl(180 100% 50% / 0.6);
+        --shadow-glow-magenta: 0 0 30px hsl(325 100% 50% / 0.6);
+        --shadow-glow-orange: 0 0 30px hsl(15 100% 60% / 0.6);
         
         /* Animations */
         --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         --transition-bounce: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         
-        --radius: 1rem;  /* Rounded for kid-friendly feel */
-    }
-    
-    .dark {
-        --background: 220 25% 15%;
-        --foreground: 0 0% 98%;
-        --card: 220 20% 18%;
-        --card-foreground: 0 0% 98%;
-        --popover: 220 20% 18%;
-        --popover-foreground: 0 0% 98%;
-        --primary: 150 60% 50%;
-        --primary-foreground: 0 0% 100%;
-        --secondary: 45 95% 55%;
-        --secondary-foreground: 220 20% 15%;
-        --accent: 25 90% 55%;
-        --accent-foreground: 0 0% 100%;
-        --muted: 220 20% 25%;
-        --muted-foreground: 0 0% 65%;
-        --border: 220 20% 30%;
-        --input: 220 20% 25%;
-        --ring: 150 60% 50%;
+        --radius: 0.75rem;  /* Retro rounded corners */
     }
 }
 
@@ -118,12 +99,12 @@ code {
     }
     
     h1, h2, h3, h4, h5, h6 {
-        font-family: 'Fredoka', 'Nunito', sans-serif;
+        font-family: 'Orbitron', 'Space Grotesk', sans-serif;
         font-weight: 700;
     }
 }
 
-/* Custom animations for game elements */
+/* Custom animations for retro game elements */
 @keyframes bounce-in {
     0% {
         transform: scale(0.8) translateY(-20px);
@@ -149,10 +130,10 @@ code {
 
 @keyframes pulse-glow {
     0%, 100% {
-        box-shadow: 0 0 20px hsl(150 60% 45% / 0.3);
+        box-shadow: 0 0 20px hsl(180 100% 50% / 0.4), 0 0 40px hsl(325 100% 50% / 0.2);
     }
     50% {
-        box-shadow: 0 0 30px hsl(150 60% 45% / 0.6);
+        box-shadow: 0 0 30px hsl(180 100% 50% / 0.6), 0 0 60px hsl(325 100% 50% / 0.4);
     }
 }
 
@@ -160,6 +141,11 @@ code {
     0%, 100% { transform: rotate(0deg); }
     25% { transform: rotate(-5deg); }
     75% { transform: rotate(5deg); }
+}
+
+@keyframes neon-flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
 }
 
 .animate-bounce-in {
@@ -178,6 +164,10 @@ code {
     animation: wiggle 0.5s ease-in-out;
 }
 
+.animate-neon-flicker {
+    animation: neon-flicker 2s ease-in-out infinite;
+}
+
 /* Progress bar animation */
 @keyframes progress-fill {
     from {
@@ -189,42 +179,68 @@ code {
     animation: progress-fill 1s ease-out;
 }
 
-/* Button hover effects */
-.btn-adventure {
+/* Retro button effects */
+.btn-retro {
     transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.4);
 }
 
-.btn-adventure:hover {
+.btn-retro:hover {
     transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.6), 0 0 50px hsl(var(--secondary) / 0.3);
 }
 
-.btn-adventure:active {
+.btn-retro:active {
     transform: translateY(0) scale(0.98);
 }
 
 /* Card hover effects */
-.card-hover {
+.card-retro {
     transition: transform 0.3s, box-shadow 0.3s;
+    border: 2px solid hsl(var(--primary) / 0.3);
 }
 
-.card-hover:hover {
+.card-retro:hover {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.5), 0 0 40px hsl(var(--secondary) / 0.3);
+    border-color: hsl(var(--primary) / 0.6);
 }
 
-/* Text gradient effect */
-.text-gradient-adventure {
-    background: linear-gradient(135deg, hsl(150 60% 45%) 0%, hsl(180 55% 50%) 100%);
+/* Text gradient effect - retro neon */
+.text-gradient-neon {
+    background: linear-gradient(135deg, hsl(180 100% 50%) 0%, hsl(325 100% 50%) 50%, hsl(15 100% 60%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 10px hsl(180 100% 50% / 0.5));
+}
+
+.text-gradient-cyan {
+    background: linear-gradient(135deg, hsl(180 100% 50%) 0%, hsl(180 100% 70%) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
-.text-gradient-gold {
-    background: linear-gradient(135deg, hsl(45 95% 55%) 0%, hsl(35 90% 50%) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+/* Scanline effect for retro feel */
+.scanlines {
+    position: relative;
+}
+
+.scanlines::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        transparent 50%,
+        rgba(0, 0, 0, 0.1) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 1;
 }
 
 @layer base {
