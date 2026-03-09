@@ -112,8 +112,12 @@ export default function StartScreen({ onStart }) {
             <Button
               onClick={onStart}
               size="lg"
-              className="w-full text-xl py-6 font-bold btn-adventure shadow-lg"
-              style={{ background: 'var(--gradient-button)' }}
+              className="w-full text-xl py-6 font-black btn-retro"
+              style={{ 
+                background: 'linear-gradient(135deg, hsl(15 100% 60%), hsl(325 100% 50%))',
+                fontFamily: 'Orbitron, sans-serif',
+                border: '2px solid hsl(180 100% 50% / 0.5)'
+              }}
             >
               🚀 Start Adventure!
             </Button>
@@ -129,7 +133,7 @@ export default function StartScreen({ onStart }) {
               href="https://blockquestofficial.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-muted-foreground hover:text-primary transition-colors inline-flex items-center gap-2"
+              className="text-sm text-primary hover:text-primary-glow transition-colors inline-flex items-center gap-2 font-semibold"
             >
               <span>🏠</span>
               <span className="underline">Back to BlockQuest HQ</span>
