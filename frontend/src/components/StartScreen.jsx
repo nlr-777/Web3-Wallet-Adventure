@@ -86,19 +86,31 @@ export default function StartScreen({ onStart }) {
             transition={{ delay: 0.6 }}
             className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm"
           >
-            <div className="bg-primary/10 rounded-xl p-4 space-y-2">
+            <div className="rounded-xl p-4 space-y-2 border-2" style={{
+              background: 'linear-gradient(135deg, hsl(180 100% 50% / 0.1) 0%, hsl(180 100% 50% / 0.05) 100%)',
+              borderColor: 'hsl(var(--primary) / 0.4)',
+              boxShadow: '0 0 20px hsl(var(--primary) / 0.2)'
+            }}>
               <div className="text-3xl">🗺️</div>
-              <p className="font-semibold text-foreground">5 Fun Levels</p>
+              <p className="font-bold text-primary">5 Fun Levels</p>
               <p className="text-muted-foreground text-xs">Adventure map to explore</p>
             </div>
-            <div className="bg-secondary/10 rounded-xl p-4 space-y-2">
+            <div className="rounded-xl p-4 space-y-2 border-2" style={{
+              background: 'linear-gradient(135deg, hsl(325 100% 50% / 0.1) 0%, hsl(325 100% 50% / 0.05) 100%)',
+              borderColor: 'hsl(var(--secondary) / 0.4)',
+              boxShadow: '0 0 20px hsl(var(--secondary) / 0.2)'
+            }}>
               <div className="text-3xl">🏆</div>
-              <p className="font-semibold text-foreground">Earn Badges</p>
+              <p className="font-bold text-secondary">Earn Badges</p>
               <p className="text-muted-foreground text-xs">Collect XP & rewards</p>
             </div>
-            <div className="bg-accent/10 rounded-xl p-4 space-y-2">
+            <div className="rounded-xl p-4 space-y-2 border-2" style={{
+              background: 'linear-gradient(135deg, hsl(15 100% 60% / 0.1) 0%, hsl(15 100% 60% / 0.05) 100%)',
+              borderColor: 'hsl(var(--accent) / 0.4)',
+              boxShadow: '0 0 20px hsl(var(--accent) / 0.2)'
+            }}>
               <div className="text-3xl">🛡️</div>
-              <p className="font-semibold text-foreground">Learn Safety</p>
+              <p className="font-bold text-accent">Learn Safety</p>
               <p className="text-muted-foreground text-xs">Web3 security tips</p>
             </div>
           </motion.div>
