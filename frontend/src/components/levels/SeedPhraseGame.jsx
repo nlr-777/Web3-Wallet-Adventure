@@ -62,26 +62,37 @@ export default function SeedPhraseGame({ level, onComplete }) {
   };
 
   return (
-    <Card className="p-6 space-y-6">
+    <Card className="p-6 space-y-6 border-2 border-primary/30 shadow-lg">
       {/* Instructions */}
-      <div className="text-center space-y-2">
-        <h2 className="text-xl font-bold text-foreground">Arrange the 12 Magic Words</h2>
-        <p className="text-muted-foreground text-sm">Tap words in the correct order to unlock your wallet!</p>
+      <div className="text-center space-y-3">
+        <h2 className="text-2xl font-bold text-gradient-neon">Arrange the 12 Magic Words</h2>
+        <div className="bg-accent/10 border-2 border-accent/30 rounded-lg p-4 space-y-2">
+          <p className="text-foreground font-semibold">🎮 How to Play:</p>
+          <ol className="text-sm text-muted-foreground text-left space-y-1 max-w-md mx-auto">
+            <li>1️⃣ Click words from "Available Words" below</li>
+            <li>2️⃣ They'll appear in numbered slots (#1, #2, #3...)</li>
+            <li>3️⃣ Click selected words to remove them</li>
+            <li>4️⃣ Arrange all 12 words in the correct order</li>
+            <li>5️⃣ Hit "Unlock Wallet" when ready!</li>
+          </ol>
+          <p className="text-xs text-accent font-semibold mt-2">💡 The words tell a story from start to finish!</p>
+        </div>
       </div>
 
       {/* Selected Words Display */}
-      <div className="bg-muted/30 rounded-xl p-6 min-h-[200px]">
+      <div className="bg-card/50 rounded-xl p-6 min-h-[220px] border-2 border-primary/20">
         <div className="flex items-center justify-between mb-4">
-          <p className="text-sm font-semibold text-muted-foreground">Your Seed Phrase ({selectedWords.length}/12):</p>
+          <p className="text-sm font-semibold text-primary">🔒 Your Seed Phrase ({selectedWords.length}/12):</p>
           <Button
-            variant="ghost"
+            variant="outline"
             size="sm"
             onClick={() => {
               setWords([...words, ...selectedWords].sort(() => Math.random() - 0.5));
               setSelectedWords([]);
             }}
+            className="border-2 border-destructive/50 text-destructive hover:bg-destructive/10"
           >
-            Clear
+            Clear All
           </Button>
         </div>
         <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
@@ -91,14 +102,19 @@ export default function SeedPhraseGame({ level, onComplete }) {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               onClick={() => handleWordClick(word, true)}
-              className="bg-primary text-primary-foreground rounded-lg p-3 font-semibold hover:bg-primary/80 transition-colors"
+              className="relative bg-gradient-to-br from-primary to-primary/80 text-primary-foreground rounded-lg p-3 font-bold hover:from-primary/90 hover:to-primary/70 transition-all shadow-lg hover:shadow-glow-cyan cursor-pointer"
+              style={{ boxShadow: '0 0 15px hsl(var(--primary) / 0.4)' }}
             >
-              <div className="text-xs opacity-70 mb-1">#{index + 1}</div>
-              <div>{word}</div>
+              <div className="absolute -top-1 -left-1 w-5 h-5 rounded-full bg-secondary text-background text-[10px] font-bold flex items-center justify-center border-2 border-background">
+                {index + 1}
+              </div>
+              <div className="mt-1">{word}</div>
             </motion.button>
           ))}
           {Array(12 - selectedWords.length).fill(null).map((_, index) => (
-            <div key={`empty-${index}`} className="bg-muted/50 rounded-lg p-3 border-2 border-dashed border-border" />
+            <div key={`empty-${index}`} className="bg-muted/30 rounded-lg p-3 border-2 border-dashed border-border flex items-center justify-center">
+              <span className="text-xs text-muted-foreground">#{selectedWords.length + index + 1}</span>
+            </div>
           ))}
         </div>
       </div>
