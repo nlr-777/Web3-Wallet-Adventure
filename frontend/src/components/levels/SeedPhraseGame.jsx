@@ -174,7 +174,7 @@ export default function SeedPhraseGame({ level, onComplete }) {
       {/* Available Words */}
       <div className="space-y-3">
         <div className="flex items-center justify-between">
-          <p className="text-sm font-semibold text-muted-foreground">Available Words:</p>
+          <p className="text-sm font-semibold" style={{ color: 'hsl(0 0% 75%)' }}>Available Words:</p>
           <Button
             variant="outline"
             size="sm"
