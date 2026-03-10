@@ -139,7 +139,7 @@ export default function GameMap({ progress, onSelectLevel, onViewDashboard, onGa
                   {/* Content */}
                   <div className="flex-1 space-y-2">
                     <h3 className="text-xl font-bold text-foreground">{level.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{level.description}</p>
+                    <p className="text-sm leading-relaxed" style={{ color: 'hsl(0 0% 85%)' }}>{level.description}</p>
                   </div>
 
                   {/* Footer */}
