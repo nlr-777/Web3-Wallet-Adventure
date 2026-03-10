@@ -55,7 +55,7 @@ export default function ReceiveCoinsGame({ level, onComplete }) {
           <div className="text-center space-y-2">
             <div className="text-5xl mb-4 animate-float">🧑‍💻</div>
             <h2 className="text-xl font-bold text-foreground">Your Friend Has a Riddle!</h2>
-            <p className="text-muted-foreground text-sm">Solve it to get your wallet address and receive coins</p>
+            <p className="text-sm" style={{ color: 'hsl(0 0% 75%)' }}>Solve it to get your wallet address and receive coins</p>
           </div>
 
           <Card className="p-6 bg-primary/5 border-2 border-primary/30">
