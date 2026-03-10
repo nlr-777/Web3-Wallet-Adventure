@@ -186,18 +186,37 @@ export default function SeedPhraseGame({ level, onComplete }) {
           </Button>
         </div>
         <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
-          {words.map((word, index) => (
-            <motion.button
-              key={`word-${index}-${word}`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => handleWordClick(word)}
-              className="bg-card border-2 border-border rounded-lg p-3 font-semibold hover:border-primary hover:bg-primary/5 transition-all"
-            >
-              {word}
-            </motion.button>
-          ))}
+          {words.map((word, index) => {
+            // Check if this word is the next correct word
+            const isNextCorrect = word === CORRECT_PHRASE[selectedWords.length];
+            
+            return (
+              <motion.button
+                key={`word-${index}-${word}`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => handleWordClick(word)}
+                className={`relative border-2 rounded-lg p-3 font-semibold transition-all ${
+                  isNextCorrect && hintLevel >= 2
+                    ? 'border-secondary bg-secondary/20 animate-pulse-glow'
+                    : 'border-border bg-card hover:border-primary hover:bg-primary/5'
+                }`}
+              >
+                {isNextCorrect && hintLevel >= 2 && (
+                  <div className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-secondary text-background text-xs font-bold flex items-center justify-center animate-bounce">
+                    ⭐
+                  </div>
+                )}
+                {word}
+              </motion.button>
+            );
+          })}
         </div>
+        {hintLevel >= 2 && words.length > 0 && (
+          <p className="text-center text-xs text-secondary font-semibold animate-pulse">
+            ⭐ Look for the glowing word - that's the next one!
+          </p>
+        )}
       </div>
 
       {/* Progressive Hint System */}
