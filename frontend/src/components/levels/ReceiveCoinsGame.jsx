@@ -123,7 +123,7 @@ export default function ReceiveCoinsGame({ level, onComplete }) {
           {/* Wallet Address Display */}
           <Card className="p-6 bg-muted/30 space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-sm font-semibold text-muted-foreground">Your Wallet Address:</span>
+              <span className="text-sm font-semibold" style={{ color: 'hsl(0 0% 75%)' }}>Your Wallet Address:</span>
               <span className="text-xs text-primary font-mono">Public & Safe to Share</span>
             </div>
             <div className="bg-card rounded-lg p-4 border-2 border-primary/30">
@@ -131,7 +131,7 @@ export default function ReceiveCoinsGame({ level, onComplete }) {
                 0xYourWallet...5678
               </code>
             </div>
-            <p className="text-xs text-muted-foreground text-center">
+            <p className="text-xs text-center" style={{ color: 'hsl(0 0% 75%)' }}>
               ✅ This is like your mailbox address - anyone can send you coins!
             </p>
           </Card>
