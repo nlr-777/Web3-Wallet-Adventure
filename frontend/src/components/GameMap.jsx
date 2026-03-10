@@ -36,8 +36,8 @@ export default function GameMap({ progress, onSelectLevel, onViewDashboard, onGa
           className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4"
         >
           <div>
-            <h1 className="text-3xl md:text-4xl font-bold text-gradient-adventure">Adventure Map 🗺️</h1>
-            <p className="text-muted-foreground mt-1">Choose your next quest!</p>
+            <h1 className="text-3xl md:text-4xl font-bold text-gradient-neon" style={{ fontFamily: 'Orbitron, sans-serif' }}>Adventure Map 🗺️</h1>
+            <p className="mt-1" style={{ color: 'hsl(0 0% 75%)' }}>Choose your next quest!</p>
           </div>
           
           <div className="flex gap-3 flex-wrap">
