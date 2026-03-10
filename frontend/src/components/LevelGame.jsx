@@ -48,9 +48,9 @@ export default function LevelGame({ level, onComplete, onBack }) {
             <div>
               <div className="flex items-center gap-3">
                 <span className="text-4xl">{level.icon}</span>
-                <h1 className="text-2xl md:text-3xl font-bold text-gradient-adventure">{level.title}</h1>
+                <h1 className="text-2xl md:text-3xl font-bold text-gradient-neon" style={{ fontFamily: 'Orbitron, sans-serif' }}>{level.title}</h1>
               </div>
-              <p className="text-muted-foreground mt-1">{level.description}</p>
+              <p className="mt-1" style={{ color: 'hsl(0 0% 75%)' }}>{level.description}</p>
             </div>
           </div>
         </motion.div>
