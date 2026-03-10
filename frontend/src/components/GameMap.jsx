@@ -172,12 +172,12 @@ export default function GameMap({ progress, onSelectLevel, onViewDashboard, onGa
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
         >
-          <Card className="p-6 bg-accent/10 border-2 border-accent/30">
+          <Card className="p-6 border-2 border-accent/30" style={{ background: 'hsl(15 100% 60% / 0.1)' }}>
             <div className="flex items-start gap-4">
               <div className="text-4xl flex-shrink-0">🧑‍🚀</div>
               <div>
                 <p className="font-bold text-lg text-accent mb-2">Sam's Safety Tip:</p>
-                <p className="text-foreground/80 leading-relaxed">
+                <p className="leading-relaxed" style={{ color: 'hsl(0 0% 85%)' }}>
                   Complete each level to unlock the next adventure! Remember, Web3 is all about learning
                   and staying safe. Take your time and read the tips carefully! 🛡️
                 </p>
