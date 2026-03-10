@@ -117,7 +117,7 @@ export default function ReceiveCoinsGame({ level, onComplete }) {
           >
             <div className="text-6xl mb-4">🎉</div>
             <h2 className="text-xl font-bold text-foreground">Great Job! Riddle Solved!</h2>
-            <p className="text-muted-foreground">Your friend is ready to send you 100 coins</p>
+            <p style={{ color: 'hsl(0 0% 75%)' }}>Your friend is ready to send you 100 coins</p>
           </motion.div>
 
           {/* Wallet Address Display */}
