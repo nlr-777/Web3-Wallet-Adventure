@@ -118,9 +118,9 @@ export default function SeedPhraseGame({ level, onComplete }) {
       {/* Instructions */}
       <div className="text-center space-y-3">
         <h2 className="text-2xl font-bold text-gradient-neon">Arrange the 12 Magic Words</h2>
-        <div className="bg-accent/10 border-2 border-accent/30 rounded-lg p-4 space-y-2">
+        <div className="border-2 border-accent/30 rounded-lg p-4 space-y-2" style={{ background: 'hsl(15 100% 60% / 0.1)' }}>
           <p className="text-foreground font-semibold">🎮 How to Play:</p>
-          <ol className="text-sm text-muted-foreground text-left space-y-1 max-w-md mx-auto">
+          <ol className="text-sm text-left space-y-1 max-w-md mx-auto" style={{ color: 'hsl(0 0% 85%)' }}>
             <li>1️⃣ Click words from "Available Words" below</li>
             <li>2️⃣ They'll appear in numbered slots (#1, #2, #3...)</li>
             <li>3️⃣ Click selected words to remove them</li>
