@@ -87,8 +87,8 @@ export default function LevelGame({ level, onComplete, onBack }) {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          <Card className="p-4 bg-accent/10 border-2 border-accent/30">
-            <p className="text-sm text-foreground/80 leading-relaxed">{level.tip}</p>
+          <Card className="p-4 border-2 border-accent/30" style={{ background: 'hsl(15 100% 60% / 0.1)' }}>
+            <p className="text-sm leading-relaxed" style={{ color: 'hsl(0 0% 85%)' }}>{level.tip}</p>
           </Card>
         </motion.div>
       </div>
