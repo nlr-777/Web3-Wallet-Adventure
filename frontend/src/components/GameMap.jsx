@@ -68,19 +68,19 @@ export default function GameMap({ progress, onSelectLevel, onViewDashboard, onGa
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
               <div className="flex-1 w-full">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-semibold text-muted-foreground">Overall Progress</span>
+                  <span className="text-sm font-semibold" style={{ color: 'hsl(0 0% 75%)' }}>Overall Progress</span>
                   <span className="text-lg font-bold text-primary">{completedCount}/{totalLevels} Levels</span>
                 </div>
                 <Progress value={completionPercent} className="h-3" />
               </div>
               <div className="flex items-center gap-4">
-                <div className="text-center px-4 py-2 bg-primary/10 rounded-xl">
+                <div className="text-center px-4 py-2 bg-primary/10 rounded-xl border border-primary/30">
                   <div className="text-2xl font-bold text-primary">{progress.xp}</div>
-                  <div className="text-xs text-muted-foreground">Total XP</div>
+                  <div className="text-xs" style={{ color: 'hsl(0 0% 75%)' }}>Total XP</div>
                 </div>
-                <div className="text-center px-4 py-2 bg-secondary/10 rounded-xl">
+                <div className="text-center px-4 py-2 bg-secondary/10 rounded-xl border border-secondary/30">
                   <div className="text-2xl font-bold text-secondary">{progress.badges.length}</div>
-                  <div className="text-xs text-muted-foreground">Badges</div>
+                  <div className="text-xs" style={{ color: 'hsl(0 0% 75%)' }}>Badges</div>
                 </div>
               </div>
             </div>
