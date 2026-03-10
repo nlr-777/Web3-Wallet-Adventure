@@ -200,23 +200,38 @@ export default function SeedPhraseGame({ level, onComplete }) {
         </div>
       </div>
 
-      {/* Hint */}
-      <div className="text-center">
-        <Button
-          variant="link"
-          onClick={() => setShowHint(!showHint)}
-          className="text-muted-foreground"
-        >
-          {showHint ? 'Hide' : 'Show'} Hint 💡
-        </Button>
-        {showHint && (
-          <motion.p
+      {/* Progressive Hint System */}
+      <div className="space-y-3">
+        <div className="text-center">
+          <Button
+            variant="outline"
+            onClick={showNextHint}
+            disabled={hintLevel >= 4}
+            className="border-2 border-secondary/50 hover:border-secondary text-secondary font-bold"
+            size="lg"
+          >
+            {hintLevel >= 4 ? '✅ All Hints Used!' : `💡 Get Hint (${hintLevel}/4)`}
+          </Button>
+        </div>
+        
+        {hintLevel > 0 && (
+          <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-sm text-muted-foreground mt-2 bg-muted/50 rounded-lg p-3"
+            className="rounded-lg p-4 border-2 space-y-2"
+            style={{
+              background: 'linear-gradient(135deg, hsl(325 100% 50% / 0.1) 0%, hsl(15 100% 60% / 0.1) 100%)',
+              borderColor: 'hsl(var(--secondary) / 0.4)'
+            }}
           >
-            The words tell a story about a magical adventure! Think about the journey from start to finish.
-          </motion.p>
+            <p className="text-sm font-bold text-secondary">Hint #{hintLevel}:</p>
+            <p className="text-sm text-foreground leading-relaxed">{getHintText()}</p>
+            {hintLevel < 4 && (
+              <p className="text-xs text-muted-foreground italic">
+                💫 Words have been auto-filled for you! Add the remaining ones.
+              </p>
+            )}
+          </motion.div>
         )}
       </div>
 
