@@ -51,10 +51,15 @@ async def log_transaction(transaction: Transaction):
         raise HTTPException(status_code=500, detail=f"Failed to log transaction: {str(e)}")
 
 @router.get("/history/{user_id}")
-async def get_transaction_history(user_id: str):
+async def get_transaction_history(user_id: str, limit: int = 100):
     """Get transaction history for a user"""
     try:
-        result = supabase.table('transactions').select("*").eq('userId', user_id).order('timestamp', desc=True).execute()
+        result = (supabase.table('transactions')
+                 .select('id,txHash,type,amount,recipient,gasLevel,gasCost,timestamp,status')
+                 .eq('userId', user_id)
+                 .order('timestamp', desc=True)
+                 .limit(limit)
+                 .execute())
         
         return {
             "success": True,
