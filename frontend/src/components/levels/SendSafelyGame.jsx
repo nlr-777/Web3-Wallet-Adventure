@@ -36,9 +36,14 @@ const ADDRESSES = [
 ];
 
 export default function SendSafelyGame({ level, onComplete }) {
+  const [wallet, setWallet] = useState(loadWallet());
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [showWarning, setShowWarning] = useState(false);
-  const [coins] = useState(50);
+  const [step, setStep] = useState('select'); // select, gas-select, mini-game, transaction
+  const [selectedGas, setSelectedGas] = useState(null);
+  const [currentTransaction, setCurrentTransaction] = useState(null);
+  const [bonusBQ, setBonusBQ] = useState(0);
+  const coins = 50;
 
   const handleSelectAddress = (address) => {
     setSelectedAddress(address);
