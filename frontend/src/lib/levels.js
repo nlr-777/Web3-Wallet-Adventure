@@ -1,14 +1,14 @@
 export const LEVELS = [
   {
     id: 1,
-    title: 'Seed Phrase Magic',
-    description: 'Arrange 12 magic words in the correct order to open your wallet!',
-    icon: '🔑',
-    xp: 60,
-    badge: 'Seed Guardian',
-    type: 'seed-phrase',
-    tip: '💡 Seed phrases are secret words — never share them! They unlock your wallet like a magic key.',
-    samQuote: '"Wallets are like magic backpacks — only you have the key!"'
+    title: 'Icon Seed Phrase Adventure',
+    description: 'Create your wallet with fun icons and help Gary the Goat recover his!',
+    icon: '🔐',
+    xp: 80,
+    badge: 'Icon Guardian',
+    type: 'icon-seed-phrase',
+    tip: '💡 Seed phrases with icons are easier to remember but just as secure! Never share them!',
+    samQuote: '"Icons make it fun, but keeping them secret is still #1!"'
   },
   {
     id: 2,
@@ -23,13 +23,13 @@ export const LEVELS = [
   },
   {
     id: 3,
-    title: 'Send Safely',
-    description: 'Choose the correct address to send coins and avoid scammer traps!',
+    title: 'Send with Gas Fees',
+    description: 'Choose the correct address and gas fee to send coins safely!',
     icon: '📤',
-    xp: 60,
+    xp: 70,
     badge: 'Safe Sender',
     type: 'send-safely',
-    tip: '💡 Always double-check addresses before sending! Scammers try to trick you with fake addresses.',
+    tip: '💡 Always double-check addresses before sending! And choose your gas fee wisely.',
     samQuote: '"Real friends don\'t ask for your seed phrase. That\'s how you spot the bad guys!"'
   },
   {
@@ -45,14 +45,14 @@ export const LEVELS = [
   },
   {
     id: 5,
-    title: 'Decentralized Escape',
-    description: 'Use your wallet to escape a centralized trap with a voting mini-game!',
-    icon: '🗳️',
-    xp: 60,
-    badge: 'Freedom Fighter',
-    type: 'decentralized-escape',
-    tip: '💡 Decentralized means no one boss controls it — everyone has a say!',
-    samQuote: '"When everyone works together, no single bad guy can control the game!"'
+    title: 'Vault Your Treasure',
+    description: 'Store coins in your secure vault with transaction simulation!',
+    icon: '🏦',
+    xp: 70,
+    badge: 'Vault Master',
+    type: 'vault-storage',
+    tip: '💡 Vaults keep your coins extra safe! Like a bank, but you control the keys.',
+    samQuote: '"Keep your treasure locked up tight. Safety first, always!"'
   }
 ];
 
