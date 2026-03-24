@@ -60,16 +60,69 @@ export default function SendSafelyGame({ level, onComplete }) {
       setShowWarning(true);
       toast.error('⚠️ Warning! This might be a scammer!');
     } else {
-      confetti({
-        particleCount: 100,
-        spread: 70,
-        origin: { y: 0.6 }
-      });
-      toast.success(`🎉 Coins sent safely! +${level.xp} XP | Badge: ${level.badge}`);
-      setTimeout(() => {
-        onComplete({ id: level.id, xp: level.xp, badge: level.badge });
-      }, 2000);
+      setStep('gas-select');
     }
+  };
+
+  const handleGasSelected = (gas) => {
+    setSelectedGas(gas);
+    setStep('mini-game');
+  };
+
+  const handleMiniGameComplete = (perfect, bonus) => {
+    setBonusBQ(bonus);
+    
+    const totalCost = coins + selectedGas.cost;
+
+    if (totalCost > wallet.balance) {
+      toast.error('Not enough BQ tokens for transaction + gas!');
+      setStep('select');
+      return;
+    }
+
+    // Create transaction
+    const tx = createTransaction('send', coins, selectedAddress.label, selectedGas);
+    setCurrentTransaction(tx);
+
+    // Update wallet
+    const newWallet = {
+      ...wallet,
+      balance: wallet.balance - totalCost + bonus,
+      totalGasSpent: wallet.totalGasSpent + selectedGas.cost,
+      transactions: [...wallet.transactions, tx]
+    };
+    setWallet(newWallet);
+    saveWallet(newWallet);
+
+    setStep('transaction');
+  };
+
+  const handleTransactionComplete = () => {
+    // Mark transaction as confirmed
+    const updatedTx = { ...currentTransaction, status: 'confirmed' };
+    const updatedWallet = {
+      ...wallet,
+      transactions: wallet.transactions.map(tx => 
+        tx.id === currentTransaction.id ? updatedTx : tx
+      )
+    };
+    saveWallet(updatedWallet);
+
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 }
+    });
+
+    toast.success(`🎉 Coins sent safely! +${level.xp} XP | Badge: ${level.badge}`);
+    
+    setTimeout(() => {
+      onComplete({ 
+        id: level.id, 
+        xp: level.xp + bonusBQ, 
+        badge: level.badge 
+      });
+    }, 2000);
   };
 
   return (
