@@ -36,7 +36,8 @@ export default function CompletionScreen({ progress }) {
   }, []);
 
   const handleClaimReward = () => {
-    window.location.href = `https://blockquestofficial.com?progress=wallet_complete&xp=${progress.xp}`;
+    const blockquestUrl = process.env.REACT_APP_BLOCKQUEST_URL || 'https://blockquestofficial.com';
+    window.location.href = `${blockquestUrl}?progress=wallet_complete&xp=${progress.xp}`;
   };
 
   return (
