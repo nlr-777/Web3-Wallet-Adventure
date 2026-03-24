@@ -142,7 +142,7 @@ export default function StartScreen({ onStart }) {
             transition={{ delay: 1 }}
           >
             <a
-              href="https://blockquestofficial.com"
+              href={process.env.REACT_APP_BLOCKQUEST_URL || "https://blockquestofficial.com"}
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-primary hover:text-primary-glow transition-colors inline-flex items-center gap-2 font-semibold"
