@@ -8,10 +8,14 @@ import ReceiveCoinsGame from './levels/ReceiveCoinsGame';
 import SendSafelyGame from './levels/SendSafelyGame';
 import SmartContractGame from './levels/SmartContractGame';
 import DecentralizedEscapeGame from './levels/DecentralizedEscapeGame';
+import IconSeedPhraseGame from './wallet/IconSeedPhraseGame';
+import VaultStorageGame from './levels/VaultStorageGame';
 
 export default function LevelGame({ level, onComplete, onBack }) {
   const renderGame = () => {
     switch (level.type) {
+      case 'icon-seed-phrase':
+        return <IconSeedPhraseGame level={level} onComplete={onComplete} />;
       case 'seed-phrase':
         return <SeedPhraseGame level={level} onComplete={onComplete} />;
       case 'receive-coins':
@@ -20,6 +24,8 @@ export default function LevelGame({ level, onComplete, onBack }) {
         return <SendSafelyGame level={level} onComplete={onComplete} />;
       case 'smart-contract':
         return <SmartContractGame level={level} onComplete={onComplete} />;
+      case 'vault-storage':
+        return <VaultStorageGame level={level} onComplete={onComplete} />;
       case 'decentralized-escape':
         return <DecentralizedEscapeGame level={level} onComplete={onComplete} />;
       default:
