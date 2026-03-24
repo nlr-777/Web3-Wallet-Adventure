@@ -173,7 +173,7 @@ export default function ProgressDashboard({ progress, onBack }) {
           >
             🗺️ Back to Map
           </Button>
-          <a href="https://blockquestofficial.com" target="_blank" rel="noopener noreferrer" className="flex-1">
+          <a href={process.env.REACT_APP_BLOCKQUEST_URL || "https://blockquestofficial.com"} target="_blank" rel="noopener noreferrer" className="flex-1">
             <Button variant="outline" className="w-full border-2" size="lg">
               🏠 BlockQuest HQ
             </Button>
