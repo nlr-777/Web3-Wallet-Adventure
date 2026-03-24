@@ -9,6 +9,7 @@ from pydantic import BaseModel, Field, ConfigDict
 from typing import List
 import uuid
 from datetime import datetime, timezone
+from routers import transactions
 
 
 ROOT_DIR = Path(__file__).parent
@@ -24,6 +25,9 @@ app = FastAPI()
 
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
+
+# Include transaction router
+app.include_router(transactions.router)
 
 
 # Define Models
