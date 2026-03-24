@@ -49,7 +49,7 @@ export default function GameMap({ progress, onSelectLevel, onViewDashboard, onGa
               <BarChart className="w-4 h-4 mr-2" />
               Progress
             </Button>
-            <a href="https://blockquestofficial.com" target="_blank" rel="noopener noreferrer">
+            <a href={process.env.REACT_APP_BLOCKQUEST_URL || "https://blockquestofficial.com"} target="_blank" rel="noopener noreferrer">
               <Button variant="outline" className="border-2">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 BlockQuest HQ
