@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
 import { Button } from '../ui/button';
 import { Card } from '../ui/card';
 import { toast } from 'sonner';
 import { AlertTriangle, CheckCircle, Shield } from 'lucide-react';
+import { loadWallet, saveWallet, createTransaction, formatBQTokens } from '../../lib/wallet';
+import GasFeeSelector from '../wallet/GasFeeSelector';
+import GasFeeMiniGame from '../wallet/GasFeeMiniGame';
+import TransactionSimulator from '../wallet/TransactionSimulator';
+import WalletBalance from '../wallet/WalletBalance';
 
 const ADDRESSES = [
   {
