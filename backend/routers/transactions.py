@@ -73,7 +73,10 @@ async def get_transaction_history(user_id: str, limit: int = 100):
 async def get_wallet_stats(user_id: str):
     """Get wallet statistics"""
     try:
-        result = supabase.table('transactions').select("*").eq('userId', user_id).execute()
+        result = (supabase.table('transactions')
+                 .select('amount,gasCost,type')
+                 .eq('userId', user_id)
+                 .execute())
         user_txs = result.data
         
         total_sent = sum(tx["amount"] for tx in user_txs if tx["type"] == "send")
