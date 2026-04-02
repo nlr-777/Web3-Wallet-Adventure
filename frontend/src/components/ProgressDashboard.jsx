@@ -5,11 +5,14 @@ import { Card } from './ui/card';
 import { Progress } from './ui/progress';
 import { Badge } from './ui/badge';
 import { ArrowLeft, Trophy, Award } from 'lucide-react';
+import TransactionHistory from './wallet/TransactionHistory';
+import { loadWallet } from '../lib/wallet';
 
 export default function ProgressDashboard({ progress, onBack }) {
   const totalXP = 300; // 5 levels * 60 XP
   const xpPercentage = (progress.xp / totalXP) * 100;
   const totalLevels = 5;
+  const wallet = loadWallet();
 
   return (
     <div className="min-h-screen p-4 md:p-8" style={{ background: 'var(--gradient-hero)' }}>
@@ -155,6 +158,17 @@ export default function ProgressDashboard({ progress, onBack }) {
                   : `Great progress! You've completed ${progress.completedLevels.length} out of ${totalLevels} levels. Keep going to become a Web3 safety expert!`}
               </p>
             </div>
+          </Card>
+        </motion.div>
+
+        {/* Transaction History */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+        >
+          <Card className="p-6 space-y-4" data-testid="transaction-history-section">
+            <TransactionHistory transactions={wallet.transactions} />
           </Card>
         </motion.div>
 
