@@ -3,22 +3,81 @@ import { motion } from 'framer-motion';
 import { Card } from '../ui/card';
 import { Button } from '../ui/button';
 import { Badge } from '../ui/badge';
-import { ArrowDownToLine, Clock, CheckCircle, Loader, Download } from 'lucide-react';
-import { exportTransactionHistory, formatBQTokens } from '../../lib/wallet';
+import { ArrowDownToLine, Clock, CheckCircle, Loader, Download, FileText } from 'lucide-react';
+import { formatBQTokens } from '../../lib/wallet';
 import { toast } from 'sonner';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
 export default function TransactionHistory({ transactions }) {
-  const [filter, setFilter] = useState('all'); // all, send, vault, reward
+  const [filter, setFilter] = useState('all');
 
-  const handleExport = () => {
-    const content = exportTransactionHistory(transactions);
-    const blob = new Blob([content], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'my-wallet-diary.txt';
-    a.click();
-    toast.success('📝 Wallet Diary exported!');
+  const handleExportPDF = () => {
+    if (transactions.length === 0) return;
+
+    const doc = new jsPDF();
+
+    // Title
+    doc.setFontSize(22);
+    doc.setTextColor(0, 220, 220);
+    doc.text('My Wallet Diary', 14, 22);
+
+    // Subtitle
+    doc.setFontSize(10);
+    doc.setTextColor(180, 180, 180);
+    doc.text('Web3 Wallet Adventure - BlockQuest Squad', 14, 30);
+    doc.text(`Exported: ${new Date().toLocaleString()}`, 14, 36);
+
+    // Summary stats
+    const totalSent = transactions.filter(tx => tx.type === 'send').reduce((sum, tx) => sum + tx.amount, 0);
+    const totalGas = transactions.reduce((sum, tx) => sum + (tx.gasCost || 0), 0);
+    doc.setFontSize(11);
+    doc.setTextColor(60, 60, 60);
+    doc.text(`Total Transactions: ${transactions.length}  |  Total Sent: ${totalSent} BQ  |  Total Gas: ${totalGas} BQ`, 14, 44);
+
+    // Line separator
+    doc.setDrawColor(0, 220, 220);
+    doc.setLineWidth(0.5);
+    doc.line(14, 47, 196, 47);
+
+    // Table
+    const tableData = transactions.map(tx => [
+      new Date(tx.timestamp).toLocaleDateString(),
+      tx.type.toUpperCase(),
+      `${tx.amount} BQ`,
+      `${tx.gasCost || 0} BQ`,
+      tx.recipient?.length > 20 ? tx.recipient.slice(0, 20) + '...' : (tx.recipient || '-'),
+      tx.status,
+      tx.txHash ? tx.txHash.slice(0, 14) + '...' : '-'
+    ]);
+
+    doc.autoTable({
+      startY: 52,
+      head: [['Date', 'Type', 'Amount', 'Gas', 'Recipient', 'Status', 'TX Hash']],
+      body: tableData,
+      theme: 'grid',
+      styles: { fontSize: 8, cellPadding: 3 },
+      headStyles: {
+        fillColor: [20, 20, 30],
+        textColor: [0, 220, 220],
+        fontStyle: 'bold'
+      },
+      alternateRowStyles: { fillColor: [245, 245, 250] },
+      columnStyles: {
+        0: { cellWidth: 22 },
+        1: { cellWidth: 18 },
+        6: { cellWidth: 30, fontSize: 7 }
+      }
+    });
+
+    // Footer
+    const pageHeight = doc.internal.pageSize.height;
+    doc.setFontSize(8);
+    doc.setTextColor(150, 150, 150);
+    doc.text('This is an educational mock wallet diary from Web3 Wallet Adventure by BlockQuest.', 14, pageHeight - 10);
+
+    doc.save('my-wallet-diary.pdf');
+    toast.success('Wallet Diary PDF exported!');
   };
 
   const filteredTransactions = filter === 'all' 
@@ -48,14 +107,15 @@ export default function TransactionHistory({ transactions }) {
           Transaction History 📜
         </h3>
         <Button
-          onClick={handleExport}
+          onClick={handleExportPDF}
           disabled={transactions.length === 0}
           size="sm"
           variant="outline"
           className="border-2 border-primary"
+          data-testid="export-diary-pdf-btn"
         >
-          <Download className="w-4 h-4 mr-2" />
-          Export Diary
+          <FileText className="w-4 h-4 mr-2" />
+          Export PDF
         </Button>
       </div>
 
